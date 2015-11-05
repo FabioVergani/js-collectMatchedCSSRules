@@ -1,3 +1,5 @@
+//autore:fabio vergani
+
 void((function($w){
  var w=$w,d=w.document,q='pseudo',k=w[q]||(w[q]=['',':focus',':hover',':active',':link',':visited',':checked',':empty',':disabled',':enabled',':first-child',':first-of-type',':last-child',':last-of-type',':only-of-type',':only-child',':in-range',':out-of-range',':read-only',':read-write',':required',':optional',':valid',':invalid',':target',':root',':after',':before',':first-letter',':first-line','selection']),j=k.length+0;
  q=[];
@@ -12,7 +14,12 @@ void((function($w){
 	e!==null;
 	e=o.nextNode()
  ){for(var i=0,m=k,l=j,h=g;i<l;i++){h(e,m[i]);};};
-q=q.join('\n');
-console.dir(q);
+
+ q[q.unshift('<!DOCTYPE html><html><head><meta charset="UTF-8"><body><pre>')]='</pre></body>';
+
+ w=w.open('about:blank','UsedCss for:'w.location,'menubar=no,toolbar=no')
+ d=w.document;
+ d.write(q.join('\n'));
+ d.close();
 })(window));
-//===================================
+//==========
