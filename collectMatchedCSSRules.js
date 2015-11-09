@@ -59,8 +59,10 @@ void((function($w){
 	return o;
  });
 
+ //fixUnit
+ t=t.replace(cux,function(s,z,n,u){var t=n;return t==='0'?t:t+u;});
 
-
+ //Result
  if(w=w.open('about:blank','','menubar=no,toolbar=no')){
   d=w.document;
   d.write(t);
