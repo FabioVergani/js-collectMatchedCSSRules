@@ -26,24 +26,25 @@ void((function($w){
 	 if(e!==null){
 
 
-		for(var sheet,sheetmedia,matchedmedia,u,s,r=e,m=q,i=0,l=r.length+0;i<l;i++){
+		for(var sheet,mediaList,matchedmedia=[],u,s,r=e,m=q,i=0,l=r.length+0;i<l;i++){
 		 u=r[i];
-
-		 matchedmedia=[];
+/*
 		 sheet=u.parentStyleSheet;
-		 sheetmedia=sheet.media;
-		 for(var themedia,sm=sheetmedia, im=0,lm=sm.length+0;im<lm;i++){
-			themedia=sm[im];
-			if(window.matchMedia(themedia).matches!==null){
-				matchedmedia[matchedmedia.length]=themedia;
-			};
-		 };
+		 medias=sheet.media;
+		 for(var mediaList=medias, mm=matchedmedia, mediastr, mli=0, mll=mediaList.length; mli <mll ; mli++) {
+            mediastr=mediaList.item(i);
+			if(window.matchMedia(mediastr).matches!==null){
+				mm[mm.length]=mediastr;
+			};mm[mm.length]=mediastr;
+        }
+*/
+
+	   s=u.cssText;
+		 if(m.indexOf(s)===-1){m[m.length]=s;};
 
 		};
 
-		 s='/*'+matchedmedia.join()+'*/'+u.cssText;
 
-		 if(m.indexOf(s)===-1){m[m.length]=s;};
 	 };
 	},
  o=d.createTreeWalker(d,1,function(){return 1;},true),e=o.currentNode=d.documentElement;
