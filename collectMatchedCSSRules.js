@@ -23,13 +23,27 @@ void((function($w){
 	var f=w.getMatchedCSSRules,
 	g=function(a,b){
 	 var e=f(a,b);
-		if(e!==null){
-		for(var s,r=e,m=q,i=0,l=r.length+0;i<l;i++){
-		 s=r[i].cssText;
-		 if(m.indexOf(s)===-1){
-			m[m.length]=s;
+	 if(e!==null){
+
+
+		for(var sheet,sheetmedia,matchedmedia,u,s,r=e,m=q,i=0,l=r.length+0;i<l;i++){
+		 u=r[i];
+
+		 matchedmedia=[];
+		 sheet=u.parentStyleSheet;
+		 sheetmedia=sheet.media;
+		 for(var themedia,sm=sheetmedia, im=0,lm=sm.length+0;im<lm;i++){
+			themedia=sm[im];
+			if(window.matchMedia(themedia).matches!==null){
+				matchedmedia[matchedmedia.length]=themedia;
+			};
 		 };
+
 		};
+
+		 s='/*'+matchedmedia.join()+'*/'+u.cssText;
+
+		 if(m.indexOf(s)===-1){m[m.length]=s;};
 	 };
 	},
  o=d.createTreeWalker(d,1,function(){return 1;},true),e=o.currentNode=d.documentElement;
