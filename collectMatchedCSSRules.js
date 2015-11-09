@@ -1,7 +1,7 @@
 void((function($w){
  var w=$w,d=w.document,q='mydatas',j=w[q],k=j||(
 	w[q]=(q=w.screen,{
-	 nwop:'width='+(q.width-120)+',height='+(q.height-120)+',menubar=no,toolbar=no',
+	 nwop:'width='+(q.width-210)+',height='+(q.height-120)+',menubar=no,toolbar=no',
 	 pseudo:['',':focus',':hover',':active',':link',':visited',':checked',':empty',':disabled',':enabled',':first-child',':first-of-type',':last-child',':last-of-type',':only-of-type',':only-child',':in-range',':out-of-range',':read-only',':read-write',':required',':optional',':valid',':invalid',':target',':root',':after',':before',':first-letter',':first-line','selection'],
 	 wop:'<!DOCTYPE html><html><head><meta charset="UTF-8"><title>*Used* cssrules for:&emsp;'+w.location.href+'</title><body style="white-space:pre;font-family:monospace;"></body>',
 	 rgx:{
@@ -69,11 +69,12 @@ void((function($w){
  //format
 t=t.replace(/(\{|:|;|,|\})\s+/gi,function(s,a){return a;});
 
-t=t.replace(/(;|\{)/gi,'$1<br/>');
-t=t.replace(/(\})/gi,'$1<br/><br/>');
+t=t.replace(/(;|\{)/gi,'$1\n');
+t=t.replace(/(\})/gi,'$1\n\n');
 
 t=t.replace(/\s+\{/gi,'{');
 
+t=t.replace(/\n[^\{\}]+;/gi,function(a){return a.replace(/\n/gi,'\n\u0020');});
 
 
 q[1]=t;
