@@ -38,11 +38,9 @@ void((function($w){
 	for(var i=0,m=k,l=j,h=g;i<l;i++){h(e,m[i]);};
  };
 
- q=[q.join('\n')];
- q[q.unshift(t)]='</body>';
+ q=[t,q.join('\n'),'</body>'];
 
  t=q[1];
-
  //toHex
  t=t.replace(rgbx,function(s,A,R,G,B,_,O,N){
 	var a=A,r=R,g=G,b=B,o=O,n=N;
@@ -69,9 +67,14 @@ void((function($w){
 
 
  //format
-t=t.replace(/(\{|:|;|,|\}?)\s+/gi,function(s,a){return a;});
+t=t.replace(/(\{|:|;|,|\})\s+/gi,function(s,a){return a;});
 
-t=t.replace(';','<br/>');
+t=t.replace(/(;|\{)/gi,'$1<br/>');
+t=t.replace(/(\})/gi,'$1<br/><br/>');
+
+t=t.replace(/\s+\{/gi,'{');
+
+
 
 q[1]=t;
 
